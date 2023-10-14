@@ -15,12 +15,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
+import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationFormComponent,
+    UserLoginFormComponent,
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
