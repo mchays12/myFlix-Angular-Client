@@ -10,6 +10,8 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
+
+
 @Component({
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',
@@ -35,6 +37,7 @@ export class UserRegistrationFormComponent implements OnInit {
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });
+
     }, (result) => {
       this.snackBar.open(result, 'OK', {
         duration: 2000

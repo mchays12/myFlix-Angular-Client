@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -25,10 +25,16 @@ export class UserRegistrationService {
     );
   }
 
+  /**
+ * Making the api call for the user login endpoint
+ * @param userDetails 
+ * @returns an observable with the user
+ */
+
   // Making the api call for the user login endpoint
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
-    return this.http.post(apiUrl + 'login?', + userDetails).pipe(
+    return this.http.post(apiUrl + 'login?', + new URLSearchParams(userDetails), {}).pipe(
       catchError(this.handleError)
     );
   }
@@ -167,7 +173,7 @@ export class UserRegistrationService {
         `Error Status code ${error.status}, ` +
         `Error body is: ${error.error}`);
     }
-    return throwError(
-      'Something bad happened; please try again later.');
+
+    return throwError('Something bad happened; please try again later.');
   }
 }

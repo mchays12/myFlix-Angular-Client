@@ -9,12 +9,14 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 //Import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss']
 })
+
 export class UserLoginFormComponent implements OnInit {
 
   @Input() loginData = { Username: '', Password: '', };
@@ -22,17 +24,24 @@ export class UserLoginFormComponent implements OnInit {
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public router: Router
+  ) { }
+
   ngOnInit(): void {
 
   }
 
   //This function is responsible for sending the form inputs to the backend
-  loggedinUser(): void {
+  loginUser(): void {
     this.fetchApiData.userRegistration(this.loginData).subscribe((result) => {
       //Logic for a successful user login goes here
+      console.log(result);
+      localStorage.setItem('username', result.user);
+      localStorage.setItem('token', result.token);
+      this.router.navigate(['movies']);
       this.dialogRef.close(); //This will close the modal on success.
-      this.snackBar.open(result, 'OK', {
+      this.snackBar.open('Logged In', 'OK', {
         duration: 2000
       });
     }, (result) => {
@@ -41,5 +50,7 @@ export class UserLoginFormComponent implements OnInit {
       });
     });
   }
+
+
 
 }
