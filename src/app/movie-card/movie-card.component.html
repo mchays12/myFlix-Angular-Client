@@ -15,7 +15,7 @@
       <button mat-button color="primary" (click)="openSynopsisDialog(movie.Description)">
         Synopsis
       </button>
-      <button mat-icon-button *ngif="!isFavorite(movie._id)" (click)="addFavorite(movie._id)"
+      <button mat-icon-button *ngIf="!isFavorite(movie.id)" (click)="addFavorite(movie.id)"
         matTooltip="Add to Favorites">
         <mat-icon>favorite_border</mat-icon>
       </button>
