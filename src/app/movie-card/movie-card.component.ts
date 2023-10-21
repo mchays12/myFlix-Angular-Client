@@ -1,6 +1,7 @@
 // src/app/movie-card/movie-card.component.ts
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieDetailDialogComponent } from '../movie-detail-dialog/movie-detail-dialog.component';
 
 import { UserRegistrationService } from '../fetch-api-data.service'
@@ -14,7 +15,8 @@ export class MovieCardComponent {
   movies: any[] = [];
   constructor(
     public fetchApiData: UserRegistrationService,
-    public dialog: MatDialog,) { }
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getMovies();
@@ -52,6 +54,26 @@ export class MovieCardComponent {
         title: "Description",
         content: synopsis
       }
+    })
+  }
+
+  isFavorite(id: string): boolean {
+    return this.fetchApiData.isFavoriteMovie(id)
+  }
+
+  removeFavorite(id: string): void {
+    this.fetchApiData.deleteFavoriteMovie(id).subscribe(() => {
+      this.snackBar.open('add to favorite', 'OK', {
+        duration: 2000
+      })
+    })
+  }
+
+  addFavorite(id: string): void {
+    this.fetchApiData.addFavoriteMovie(id).subscribe(() => {
+      this.snackBar.open('remove favorite', 'OK', {
+        duration: 2000
+      })
     })
   }
 }
