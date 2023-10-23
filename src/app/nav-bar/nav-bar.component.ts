@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserRegistrationService } from '../fetch-api-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +10,8 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 export class NavBarComponent {
   constructor(
     public fetchApiData: UserRegistrationService,
-    public router: Router) { }
+    public router: Router
+  ) { }
 
   logoutUser(): void {
     localStorage.removeItem('user');

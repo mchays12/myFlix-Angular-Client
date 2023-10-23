@@ -2,7 +2,7 @@
   display: grid;
   align-items: stretch;
   grid-gap: 3px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 2fr));
   grid-auto-rows: 1fr;
   max-width: 1280px;
   margin: auto;
@@ -16,4 +16,9 @@
 img {
   width: auto;
   max-height: 50%;
+}
+
+.fave-button {
+  margin-left: auto;
+  color: #d87093;
 }
