@@ -1,4 +1,5 @@
 .navbar {
+  background-color: rgb(0, 43, 160);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -6,4 +7,34 @@
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+.text-color {
+  font-size: 1rem;
+  color: azure;
+  cursor: pointer;
+  text-decoration: none;
+
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+
+  box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+
+  position: relative;
+}
+
+
+.text-color:hover,
+.text-color:focus {
+  color: var(--clr-bg);
+  text-shadow: none;
+}
+
+.text-color:hover::before,
+.text-color:focus::before {
+  opacity: 1;
+}
+
+.text-color:hover::after,
+.text-color:focus::after {
+  opacity: 1;
 }

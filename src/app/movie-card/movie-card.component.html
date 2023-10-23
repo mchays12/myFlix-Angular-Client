@@ -1,8 +1,9 @@
+<app-nav-bar></app-nav-bar>
 <div class="movie-page">
   <mat-card *ngFor="let movie of movies;">
     <mat-card-header class="movie-header">
-      <mat-card-title>{{movie.Title}}</mat-card-title>
-      <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
+      <mat-card-title class="movie-title">{{movie.Title}}</mat-card-title>
+      <mat-card-subtitle class="movie-director">Directed by: {{movie.Director.Name}}</mat-card-subtitle>
     </mat-card-header>
     <img height="100%" src={{movie.ImagePath}} alt={{movie.Title}} />
     <mat-card-actions>
