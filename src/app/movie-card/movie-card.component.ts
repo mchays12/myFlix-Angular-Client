@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
+
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   constructor(
